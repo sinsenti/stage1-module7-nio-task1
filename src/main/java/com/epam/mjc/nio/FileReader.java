@@ -27,14 +27,19 @@ public class FileReader {
             String[] parts = line.split(":", 2);
             String key = parts[0].trim();
             String value = parts[1].trim();
-            if (key.equals("Name")) {
-                name = value;
-            } else if (key.equals("Age")) {
-                age = Integer.parseInt(value);
-            } else if (key.equals("Email")) {
-                email = value;
-            } else if (key.equals("Phone")) {
-                phone = Long.parseLong(value);
+            switch (key) {
+                case "Name":
+                    name = value;
+                    break;
+                case "Age":
+                    age = Integer.parseInt(value);
+                    break;
+                case "Email":
+                    email = value;
+                    break;
+                case "Phone":
+                    phone = Long.parseLong(value);
+                    break;
             }
         }
         return new Profile(name, age, email, phone);
