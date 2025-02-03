@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+
 
 public class FileReader {
 
@@ -17,7 +19,7 @@ public class FileReader {
                 fileContent.append(line).append("\n");
             }
         } catch (IOException e) {
-            System.err.println("Error reading the file: " + e.getMessage());
+            Logger.getLogger(FileReader.class.getName()).log(Level.SEVERE, null, e);
         }
 
         String content = fileContent.toString();
@@ -44,6 +46,8 @@ public class FileReader {
                     break;
                 case "Phone":
                     phone = Long.parseLong(value);
+                    break;
+                default:
                     break;
             }
         }
